@@ -1,0 +1,14 @@
+# Configuracio local
+.venv
+.vscode
+
+# Generado tras cada ejecucion
+# temp/graficas/*
+# temp/tablas/*
+# report/
+src/__pycache__
+
+# Archivos de pruebas
+prueba.py
+banco_trabajo.ipynb
+data/*.csv
