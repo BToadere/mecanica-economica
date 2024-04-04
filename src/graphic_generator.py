@@ -93,7 +93,8 @@ def pinta(tablas, columnas):
     plt.savefig(ruta_figura)
     
     # Mostrar la gráfica
-    plt.show()
+    # plt.show()
+
 
 def pinta_px(tablas, columnas):
     # Crear la carpeta 'Exportaciones' si no existe
