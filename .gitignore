@@ -7,9 +7,13 @@
 # temp/tablas/*
 # report/
 src/__pycache__
+__pycache__
 
 # Archivos de pruebas
 prueba.py
 banco_trabajo.ipynb
 data/*.csv
 # utiles.ipynb
+
+# Archivos generados
+temp/graficas

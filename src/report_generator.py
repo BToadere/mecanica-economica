@@ -1,7 +1,7 @@
 import os
 import docx
 from docx.shared import Pt, Mm
-
+import pandas as pd
 
 def calculos_resumen_serie(serie_x, serie_z, val_p, val_r, seeds):
     tabla_resumen = pd.DataFrame()

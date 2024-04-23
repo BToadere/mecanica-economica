@@ -25,6 +25,7 @@ class evento(pd.DataFrame):
         elif isinstance(data_or_path, str):
             super().__init__(pd.read_excel(data_or_path, sheet_name=hoja))
             self.columns= ['time', 'value']
+            self.sort_values(by='time')
         else:
             print('ERROR: No se ha inicializado correctamente la clase evento')
         # print('numero_registros: ', numero_registros)
