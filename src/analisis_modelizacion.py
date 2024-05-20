@@ -55,15 +55,18 @@ class evento(pd.DataFrame):
         columna = np.log(columna)
 
         # Calcular la diferencia entre elementos consecutivos (analogo formula articulo)
-        columna = np.diff(columna)#np.insert(, 0, 0)
+        columna = np.diff(columna)
         # print(N, len(columna))
-        
+        # result = columna
         # print(result)
         
         for i in range(grupo, N):
             # print(i, range(i-grupo, i))
-            result[i] = np.std(columna[i-grupo:i+grupo])
+            vector_desviacion_tipica = columna[i-grupo:i]
+            result[i] = np.std(vector_desviacion_tipica, ddof=1)
+            # print(vector_desviacion_tipica, len(vector_desviacion_tipica),result[i]*np.sqrt(252))
         # print(len(result), result)
+        result = np.sqrt(252)*result
         self[f'volatility_{grupo}'] = result
         return
         

@@ -11,7 +11,7 @@ __pycache__
 
 # Archivos de pruebas
 prueba.py
-banco_trabajo.ipynb
+# banco_trabajo.ipynb
 data/*.csv
 # utiles.ipynb
 

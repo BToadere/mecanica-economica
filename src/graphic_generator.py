@@ -17,13 +17,24 @@ def pinta(tablas, columnas):
     # Inicializar la figura
     fig, ax = plt.subplots() 
     max_longitud = 0
-    
+    ind_normalizador = 0
+    if len(columnas)>1:
+        ind_normalizador = 1
+        
     for i, tabla in enumerate(tablas):
         for j, columna in enumerate(columnas[i]):
             # print('columna:\n', columna)
             # Extraer datos de la tabla
+            if len(columnas[i])>1:
+                ind_normalizador = 1
             x = pd.to_datetime(tabla['time']).apply(lambda x: x.timestamp()).to_numpy()
             y = tabla[columna].to_numpy()  # Columna a graficar
+            
+            print(f'{os.environ.get("nombre_evento")}_{columna}', ind_normalizador, np.nanmax(y))
+            
+            if ind_normalizador:
+                y = y/np.nanmax(np.abs(y))
+            # print(y)
 
             # Eliminar elementos nulos
             x = x[~np.isnan(y)]
@@ -35,7 +46,9 @@ def pinta(tablas, columnas):
             if longitud_dominio > max_longitud:
                 max_longitud = longitud_dominio
                 x_eje = x
-
+            else:
+                x_eje = x
+            
             if len(y) == 0:
                 print(f'No se ha podido graficar la {os.environ.get("nombre_evento")}_{columna}')
                 continue
@@ -82,7 +95,9 @@ def pinta(tablas, columnas):
     
     ax.set_xticks(x_ticks)
     ax.set_xticklabels(fec_x_formateada)
-
+    
+    if ind_normalizador:
+        plt.gca().set_yticks([])
     # Añadir leyenda
     ax.legend()
     plt.xticks(rotation=25)
